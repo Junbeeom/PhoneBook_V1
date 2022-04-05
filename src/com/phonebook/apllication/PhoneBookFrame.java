@@ -21,28 +21,21 @@ public class PhoneBookFrame {
             System.out.println("======");
 
             switch(sc.nextInt()) {
-                //전화번호 등록 메서드 호출
                 case 1:
-                    //registered 메서드 적기
                     phoneBook.registered();
                     break;
                 case 2:
-                    //deleted 메서드 적기
                     phoneBook.deleted();
                     break;
                 case 3:
-                    //search 메서드 적기
                     phoneBook.search();
                     break;
                 case 4:
-                    //modified 메서드 적기
                     phoneBook.modified();
                     break;
                 case 5:
-                    //list 메서드 적기
                     phoneBook.list();
                     break;
-                //종료
                 default:
                     flag = false;
             }

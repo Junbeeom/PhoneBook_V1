@@ -10,7 +10,6 @@ public class PhoneUserData {
 
     public PhoneUserData() {}
 
-    //(등록을 위한) 이름, 전화번호부, 이메일 등록하기
     public PhoneUserData(String name, String number, String email, String registeredTime, String modifyTime) {
         this.name = name;
         this.number = number;
@@ -19,38 +18,16 @@ public class PhoneUserData {
         this.modifyTime = modifyTime;
     }
 
-
-    public String getName() {
-        return name;
-    }
-    // 접근제한자 리턴타입 메소드명(매개변수) { 바디 ?}
     public void setName(String name) {
         this.name = name;
     }
 
-    public String getNumber() {
-        return  number;
-    }
     public void setNumber(String number) {
         this.number = number;
     }
 
-    public String getEmail() {
-        return  email;
-    }
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getRegisteredTime() {
-        return registeredTime;
-    }
-    public void setRegisteredTime(String registeredTime) {
-        this.registeredTime = registeredTime;
-    }
-
-    public String getModifyTime() {
-        return modifyTime;
     }
 
     public void setModifyTime(String modifyTime) {

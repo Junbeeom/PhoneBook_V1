@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PhoneBook {
-    private String userName, userNumber, userEmail, secondName, newNumber, newEmail;
+    private String userName, userNumber, userEmail, newNumber, newEmail;
     private int cnt = 1;
 
     PhoneBook() {};
@@ -23,7 +23,6 @@ public class PhoneBook {
         userName = scanner.next();
 
         if(phone_dic.get(userName) != null) {
-            //중복된 이름이 있다면
             userName = userName + cnt;
             userData.setName(userName);
 
@@ -67,9 +66,9 @@ public class PhoneBook {
         }
 
         //4.등록 일시
-        SimpleDateFormat format1 = new SimpleDateFormat( "yyyy.MM.dd HH:mm:ss");
+        SimpleDateFormat userFormat = new SimpleDateFormat( "yyyy.MM.dd HH:mm:ss");
         Date time = new Date();
-        String registeredTime = format1.format(time);
+        String registeredTime = userFormat.format(time);
 
         phone_dic.put(userName, new PhoneUserData(userName, userNumber, userEmail, registeredTime, "없음"));
 
@@ -111,12 +110,11 @@ public class PhoneBook {
 
        boolean flag = false;
        for (String key : phone_dic.keySet()) {
-           if (key.contains(searchName) == true) {
+           if(key.contains(searchName) == true) {
                System.out.println(phone_dic.get(key).toString());
                flag = true;
            }
        }
-
        if(!flag) {
            System.out.println("등록된 이름이 없습니다.");
        }
@@ -126,7 +124,7 @@ public class PhoneBook {
     public void modified() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("수정하실 이름을 입력하세요. ex)1조준범");
+        System.out.println("수정하실 이름을 입력하세요. ex)조준범");
         String inputName = scanner.next();
 
         if(phone_dic.get(inputName) == null) {
@@ -136,7 +134,6 @@ public class PhoneBook {
             int choiceNumber = scanner.nextInt();
 
             switch (choiceNumber) {
-                //이름 변경
                 case 1:
                     System.out.println("변경하실 이름을 입력하세요.");
                     String newName = scanner.next();
@@ -146,9 +143,9 @@ public class PhoneBook {
 
                     switch (switchNumber) {
                         case 1:
-                            SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss");
-                            Date time2 = new Date();
-                            String modifyTime = format2.format(time2);
+                            SimpleDateFormat userFormat = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss");
+                            Date time = new Date();
+                            String modifyTime = userFormat.format(time);
 
                             phone_dic.get(inputName).setModifyTime(modifyTime);
 
@@ -193,11 +190,10 @@ public class PhoneBook {
                         }
                     }
                     System.out.println("정말 변경 하실 껀가요? 변경 1번, 취소 2번");
-                    int switchNumber2 = scanner.nextInt();
+                    int switchNumber_B = scanner.nextInt();
 
-                    switch (switchNumber2) {
+                    switch (switchNumber_B) {
                         case 1:
-                            //전화번호 수정 로직
                             phone_dic.get(inputName).setNumber(newNumber);
 
                             SimpleDateFormat format2 = new SimpleDateFormat( "yyyy.MM.dd HH:mm:ss");
@@ -232,11 +228,10 @@ public class PhoneBook {
                         }
                     }
                     System.out.println("정말 변경 하실 껀가요? 변경 1번, 취소 2번");
-                    int switchNumber3 = scanner.nextInt();
+                    int switchNumber_C = scanner.nextInt();
 
-                    switch (switchNumber3) {
+                    switch (switchNumber_C) {
                         case 1:
-                           //이메일 주소 변경 로직
                             phone_dic.get(inputName).setEmail(newEmail);
 
                             SimpleDateFormat format2 = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss");
